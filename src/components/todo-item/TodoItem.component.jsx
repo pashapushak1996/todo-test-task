@@ -15,5 +15,3 @@ export const TodoItemComponent = ({ id, title, description, status, handleClickT
         </div>
     );
 };
-
-TodoItemComponent.d
