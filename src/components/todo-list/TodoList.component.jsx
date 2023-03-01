@@ -4,9 +4,12 @@ import { TodoItemComponent } from "../todo-item/TodoItem.component.jsx";
 import './TodoList.css';
 
 export const TodoListComponent = ({ todos, handleClickTodo }) => {
-    const todosItems = todos.map((item) => <TodoItemComponent key={ item.id }
-                                                              handleClickTodo={ handleClickTodo }
-                                                              { ...item }/>)
+    const todosItems = todos.map((item) => {
+        return <TodoItemComponent key={ item.id }
+                                  handleClickTodo={ handleClickTodo(item.id) }
+                                  { ...item }
+        />
+    });
 
     return (
         <div className='todo-list'>

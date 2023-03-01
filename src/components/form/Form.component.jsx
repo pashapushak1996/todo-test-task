@@ -2,19 +2,15 @@ import React, { useState } from 'react';
 
 import { FormInputComponent } from "../form-input/FormInput.component.jsx";
 import './Form.css';
-import { useDispatch } from "react-redux";
-import { addTodo } from "../../features/todoSlice.js";
 
-export const FormComponent = () => {
-    const dispatch = useDispatch();
-
+export const FormComponent = ({ addTodo }) => {
     const [todoFields, setTodoFields] = useState({ title: '', description: '' });
     const [error, setError] = useState(null);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
 
-        setTodoFields(prevFormFields => ({ ...prevFormFields, [name]: value }))
+        setTodoFields(prevFormFields => ({ ...prevFormFields, [name]: value }));
     }
 
     const isInputEmpty = (inputValue) => !inputValue.trim();
@@ -36,8 +32,9 @@ export const FormComponent = () => {
             status: false
         };
 
-        dispatch(addTodo(newTodo))
+        addTodo(newTodo);
 
+        setTodoFields({ title: '', description: '' });
     }
 
     return (

@@ -10,7 +10,7 @@ export const TodoItemComponent = ({ id, title, description, status, handleClickT
             <p className='todo-item__description'>{ description }</p>
             <input type="checkbox"
                    checked={ status }
-                   data-todo-id={ id }
+                   onChange={ handleClickTodo }
             />
         </div>
     );
