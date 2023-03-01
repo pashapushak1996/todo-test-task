@@ -1,0 +1,14 @@
+.form-input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.form-input--error input {
+    border: 1px solid red;
+}
+
+.form-input--error p {
+    color: red;
+}

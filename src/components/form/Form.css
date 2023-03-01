@@ -1,0 +1,16 @@
+.form {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.form__input {
+    height: 55px;
+}
+
+.form__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

@@ -1,0 +1,21 @@
+.todo-list {
+    width: 500px;
+}
+
+.todo-list__header {
+    display: inline-flex;
+    gap: 20px;
+
+    padding: 5px 20px;
+
+    background-color: darkgray;
+
+    margin-bottom: 10px;
+}
+
+.todo-list__header span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+}
