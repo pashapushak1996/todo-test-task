@@ -1,25 +1,14 @@
 import React, { useState } from 'react';
 
-import { TodoItem } from "./components/todo-item/TodoItem.jsx";
+import todos from './db';
+import { TodoList } from "./components/table/TodoList.jsx";
 
 const App = () => {
-    const [item, setItem] = useState({
-        id: 2,
-        description: 'asdsad',
-        title: 'dasdsad',
-        status: true
-    });
+    const [items, setItems] = useState();
 
 
     return (
-        <div>
-            <TodoItem id={ item.id }
-                      description={ item.description }
-                      title={ item.title }
-                      status={ item.status } onChange={ (newStatus) => {
-                setItem({ ...item, status: newStatus });
-            } }/>
-        </div>
+        <TodoList items={ todos }/>
     );
 };
 

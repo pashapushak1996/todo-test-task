@@ -2,11 +2,11 @@ import React from 'react';
 
 import './TodoItem.css';
 
-export const TodoItem = ({ id, title, description, completed, onChange }) => {
+export const TodoItem = ({ id, title, description, status, onChange }) => {
     const handleChange = (e) => {
         e.stopPropagation();
 
-        onChange(!completed);
+        onChange(!status);
     };
 
 
@@ -22,7 +22,7 @@ export const TodoItem = ({ id, title, description, completed, onChange }) => {
                 <p className='todo-item__text'>{ description }</p>
             </div>
             <div className="todo-item__column">
-                <input type="checkbox" checked={ completed } onChange={ handleChange }/>
+                <input type="checkbox" checked={ status } onChange={ handleChange }/>
             </div>
         </div>
     );
