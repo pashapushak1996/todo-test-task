@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import todos from './db';
-import { TodoList } from "./components/table/TodoList.jsx";
+import { FormInput } from "./components/form/form-input/FormInput.jsx";
 
 const App = () => {
-    const [items, setItems] = useState();
 
 
     return (
-        <TodoList items={ todos }/>
+        <div>
+            <FormInput placeholder={ 'Enter a title' } name={ 'title' } label={ 'Title' } error={ 'It`s empty' }/>
+        </div>
     );
 };
 

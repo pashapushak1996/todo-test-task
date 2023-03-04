@@ -1,0 +1,19 @@
+.input {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 5px;
+}
+
+.input__error-text {
+    color: red;
+}
+
+.input > input {
+    padding: 2px 5px;
+}
+
+.input--is-error > input {
+    border: 1px solid red;
+}
