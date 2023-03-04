@@ -1,64 +1,26 @@
-import { useState } from "react";
+import React, { useState } from 'react';
 
-import { FormComponent } from "./components/form/Form.component.jsx";
-import { TodoListComponent } from "./components/todo-list/TodoList.component.jsx";
-import { Modal } from "./components/modal/Modal.jsx";
+import { TodoItem } from "./components/todo-item/TodoItem.jsx";
 
-function App() {
-    const [todos, setTodos] = useState([]);
-    const [selectedTodo, setSelectedTodo] = useState(null);
-    const [showModal, setShowModal] = useState(false);
-
-    const toggleModalVisibility = () => {
-        setShowModal(prev => !prev);
-    };
-
-    const selectTodo = (todoId) => {
-        const todo = todos.find(todo => todo.id === todoId);
+const App = () => {
+    const [item, setItem] = useState({
+        id: 2,
+        description: 'asdsad',
+        title: 'dasdsad',
+        status: true
+    });
 
 
-        setSelectedTodo(todo);
-    };
-
-    const onTodoStatusChange = (todoId) => {
-        const changedTodos = todos.map((todo) => {
-            if (todo.id === todoId) {
-                todo.status = !todo.status;
-            }
-
-            return todo;
-        });
-
-        setTodos(changedTodos);
-    };
-
-    const handleClickTodo = (todoId) => (e) => {
-        if (e.target.type === 'checkbox') {
-            onTodoStatusChange(todoId);
-
-            return;
-        }
-
-        selectTodo(todoId);
-
-        toggleModalVisibility();
-    }
-
-    const addTodo = (newTodo) => {
-        setTodos(prevTodos => [...prevTodos, newTodo]);
-    }
-
-    return (<div className='app'>
-        <FormComponent addTodo={ addTodo }/>
-        <TodoListComponent
-            todos={ todos }
-            handleClickTodo={ handleClickTodo }
-        />
-        { showModal && <Modal { ...selectedTodo }
-                              toggleVisibility={ toggleModalVisibility }
-                              onChangeStatus={ () => onTodoStatusChange(selectedTodo.id) }/> }
-        { showModal && <div className="overlay"></div> }
-    </div>);
+    return (
+        <div>
+            <TodoItem id={ item.id }
+                      description={ item.description }
+                      title={ item.title }
+                      status={ item.status } onChange={ (newStatus) => {
+                setItem({ ...item, status: newStatus });
+            } }/>
+        </div>
+    );
 };
 
-export default App
+export default App;

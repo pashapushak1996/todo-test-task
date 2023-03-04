@@ -1,19 +1,21 @@
 .todo-item {
-    display: inline-flex;
+    display: grid;
     align-items: center;
+    grid-template-columns: repeat(auto-fit, 100px);
     gap: 20px;
+    padding: 20px 0px;
 
-    padding: 20px 20px;
-    margin-bottom: 10px;
-
-    background-color: gray;
+    background-color: darkgray;
 }
 
-
-.todo-item span,
-.todo-item p,
-.todo-item input {
+.todo-item__column {
     display: flex;
     justify-content: center;
-    width: 100px;
+    align-items: center;
+}
+
+.todo-item__text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
