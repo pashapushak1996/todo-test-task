@@ -11,12 +11,16 @@ export const TodoList = ({ items, changeStatus, onItemClick }) => {
         };
 
         const handleItemClick = () => {
-            onItemClick(todo);
+            onItemClick(todo.id);
         }
 
-        return <TodoItem { ...todo }
-                         onClick={ handleItemClick }
-                         onChange={ handleStatusChange }/>
+        return (
+            <TodoItem
+                { ...todo }
+                key={ todo.id }
+                onClick={ handleItemClick }
+                onChange={ handleStatusChange }/>
+        )
     });
 
     return (

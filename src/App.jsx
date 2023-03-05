@@ -6,13 +6,28 @@ import { TodoList } from "./components/todo-list/TodoList.jsx";
 import './App.css';
 
 import { Modal } from "./components/modal/Modal.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { changeTodoStatus, getTodos, setSelectedTodoId } from "./redux/todos/todosSlice.js";
 
 const App = () => {
-    const [isModalOpen, setIsModalOpen] = useState(true);
+    const dispatch = useDispatch();
+
+    const todos = useSelector(getTodos);
+
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const toggleModalVisibility = () => {
         setIsModalOpen(!isModalOpen);
     };
+
+    const onTodoClick = (todoId) => {
+        dispatch(setSelectedTodoId(todoId));
+    }
+
+    const changeTodoItemStatus = (todoId, status) => {
+        dispatch(changeTodoStatus({ todoId, status }));
+    }
 
     const modalClassName = isModalOpen
         ? 'app__modal app__modal--is-visible'
@@ -24,12 +39,11 @@ const App = () => {
 
     return (
         <div className='app'>
-            <button onClick={ toggleModalVisibility }>asdsad</button>
             <div className="app__form">
                 <Form/>
             </div>
             <div className="app__list">
-                <TodoList items={ [] }/>
+                <TodoList items={ todos } onItemClick={ onTodoClick } changeStatus={ changeTodoItemStatus }/>
             </div>
             <div className={ modalClassName }>
                 <Modal onClickClose={ toggleModalVisibility }>

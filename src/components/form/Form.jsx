@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
+import { useDispatch } from "react-redux";
 
 import { FormInput } from "./form-input/FormInput.jsx";
 import { isFieldEmpty } from '../../utils/form-validators';
 import FormErrorsMessagesEnum from "../../constants/FormErrorsMessages.enum.js";
 
 import './Form.css';
+import { addTodo } from "../../redux/todos/todosSlice.js";
 
 
 export const Form = () => {
+    const dispatch = useDispatch();
+
     const [todo, setTodo] = useState({
         title: '',
         description: ''
@@ -32,7 +36,7 @@ export const Form = () => {
             return;
         }
 
-
+        dispatch(addTodo(todo))
     }
 
     const isTitleEmpty = error && isFieldEmpty(todo.title) ? error : null;
