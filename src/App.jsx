@@ -1,14 +1,21 @@
 import React from 'react';
 
-import todos from './db';
-import { FormInput } from "./components/form/form-input/FormInput.jsx";
+import { Form } from "./components/form/Form.jsx";
+import { TodoList } from "./components/todo-list/TodoList.jsx";
+
+import './App.css';
 
 const App = () => {
 
 
     return (
-        <div>
-            <FormInput placeholder={ 'Enter a title' } name={ 'title' } label={ 'Title' } error={ 'It`s empty' }/>
+        <div className='app'>
+            <div className="app__form">
+                <Form/>
+            </div>
+            <div className="app__list">
+                <TodoList items={ [] }/>
+            </div>
         </div>
     );
 };

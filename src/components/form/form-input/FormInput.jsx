@@ -8,8 +8,8 @@ export const FormInput = ({ label, name, value, placeholder, onChange, error }) 
 
     return (
         <div className={ className }>
-            <label htmlFor={ name }>{ label }:</label>
-            <input type="text" value={ value } onChange={ onChange } placeholder={ placeholder }/>
+            <label className='input__label' htmlFor={ name }>{ label }:</label>
+            <input type="text" name={ name } value={ value } onChange={ onChange } placeholder={ placeholder }/>
             { error && <div className={ 'input__error-text' }>{ error }</div> }
         </div>
     );

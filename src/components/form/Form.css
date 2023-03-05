@@ -1,0 +1,12 @@
+.form {
+
+}
+
+.form__input {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.form__button {
+    padding: 2px 5px;
+}
