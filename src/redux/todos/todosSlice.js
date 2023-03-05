@@ -12,7 +12,7 @@ const todosSlice = createSlice({
         addTodo: (state, action) => {
             const createdTodo = {
                 ...action.payload,
-                id: Date.now().toString(),
+                id: state.todos.length + 1,
                 status: false
             };
 
@@ -32,9 +32,6 @@ const todosSlice = createSlice({
         }
     }
 });
-
-export const getTodos = (state) => state.todos.todos;
-export const getTodoById = (state) => state.todos.todos.find((todo) => todo.id === state.todos.selectedTodoId);
 
 export const { addTodo, changeTodoStatus, setSelectedTodoId } = todosSlice.actions;
 

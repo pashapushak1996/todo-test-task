@@ -1,0 +1,19 @@
+.todo-detail {
+
+}
+
+.todo-detail__title {
+    text-align: center;
+
+    margin-bottom: 20px;
+}
+
+.todo-detail__subtitle {
+    display: block;
+
+    margin-bottom: 10px;
+}
+
+.todo-detail__description {
+    margin-bottom: 10px;
+}

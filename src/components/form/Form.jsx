@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch } from "react-redux";
 
+import { addTodo } from "../../redux/todos/todosSlice.js";
+
 import { FormInput } from "./form-input/FormInput.jsx";
 import { isFieldEmpty } from '../../utils/form-validators';
-import FormErrorsMessagesEnum from "../../constants/FormErrorsMessages.enum.js";
+import FormErrors from "../../constants/FormErrors.enum.js";
 
 import './Form.css';
-import { addTodo } from "../../redux/todos/todosSlice.js";
 
 
 export const Form = () => {
@@ -31,12 +32,19 @@ export const Form = () => {
         const areFieldsEmpty = Object.values(todo).some((field) => isFieldEmpty(field));
 
         if (areFieldsEmpty) {
-            setError(FormErrorsMessagesEnum.IS_EMPTY);
+            setError(FormErrors.IS_EMPTY);
 
             return;
         }
 
-        dispatch(addTodo(todo))
+        dispatch(addTodo(todo));
+
+        setTodo({
+            title: '',
+            description: ''
+        });
+
+        setError(null);
     }
 
     const isTitleEmpty = error && isFieldEmpty(todo.title) ? error : null;

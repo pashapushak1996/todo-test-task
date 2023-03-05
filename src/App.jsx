@@ -7,7 +7,9 @@ import './App.css';
 
 import { Modal } from "./components/modal/Modal.jsx";
 import { useDispatch, useSelector } from "react-redux";
-import { changeTodoStatus, getTodos, setSelectedTodoId } from "./redux/todos/todosSlice.js";
+import { changeTodoStatus, setSelectedTodoId } from "./redux/todos/todosSlice.js";
+import { getTodos } from "./redux/todos/selectors";
+import { TodoDetailContainer } from "./components/todo-detail/TodoDetail.container.jsx";
 
 const App = () => {
     const dispatch = useDispatch();
@@ -23,6 +25,8 @@ const App = () => {
 
     const onTodoClick = (todoId) => {
         dispatch(setSelectedTodoId(todoId));
+
+        toggleModalVisibility();
     }
 
     const changeTodoItemStatus = (todoId, status) => {
@@ -47,7 +51,7 @@ const App = () => {
             </div>
             <div className={ modalClassName }>
                 <Modal onClickClose={ toggleModalVisibility }>
-                    <h1>Hello</h1>
+                    <TodoDetailContainer onChangeStatus={ changeTodoItemStatus }/>
                 </Modal>
             </div>
             <div className={ overlayClassName }></div>

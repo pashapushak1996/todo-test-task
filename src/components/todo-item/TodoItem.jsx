@@ -9,6 +9,10 @@ export const TodoItem = ({ id, title, description, status, onChange, onClick }) 
         onChange(!status);
     };
 
+    const cancelPropagation = (e) => {
+        e.stopPropagation();
+    }
+
 
     return (
         <div className='todo-item' onClick={ onClick }>
@@ -22,7 +26,10 @@ export const TodoItem = ({ id, title, description, status, onChange, onClick }) 
                 <p className='todo-item__text'>{ description }</p>
             </div>
             <div className="todo-item__column">
-                <input type="checkbox" checked={ status } onChange={ handleChange }/>
+                <input type="checkbox"
+                       checked={ status }
+                       onClick={ cancelPropagation }
+                       onChange={ handleChange }/>
             </div>
         </div>
     );

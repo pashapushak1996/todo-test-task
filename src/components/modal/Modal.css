@@ -1,4 +1,10 @@
 .modal {
+    width: 100%;
+
     padding: 20px;
     background-color: white;
+}
+
+.modal__content {
+    margin-bottom: 10px;
 }
