@@ -3,14 +3,20 @@ import React from 'react';
 import './TodoList.css';
 import { TodoItem } from "../todo-item/TodoItem.jsx";
 
-export const TodoList = ({ items, changeStatus }) => {
+export const TodoList = ({ items, changeStatus, onItemClick }) => {
     const listItems = items.map((todo) => {
 
         const handleStatusChange = (newStatus) => {
             changeStatus(todo.id, newStatus);
         };
 
-        return <TodoItem { ...todo } onChange={ handleStatusChange }/>
+        const handleItemClick = () => {
+            onItemClick(todo);
+        }
+
+        return <TodoItem { ...todo }
+                         onClick={ handleItemClick }
+                         onChange={ handleStatusChange }/>
     });
 
     return (

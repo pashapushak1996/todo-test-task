@@ -2,7 +2,7 @@ import React from 'react';
 
 import './TodoItem.css';
 
-export const TodoItem = ({ id, title, description, status, onChange }) => {
+export const TodoItem = ({ id, title, description, status, onChange, onClick }) => {
     const handleChange = (e) => {
         e.stopPropagation();
 
@@ -11,7 +11,7 @@ export const TodoItem = ({ id, title, description, status, onChange }) => {
 
 
     return (
-        <div className='todo-item'>
+        <div className='todo-item' onClick={ onClick }>
             <div className="todo-item__column">
                 <p className='todo-item__text'>{ id }</p>
             </div>
